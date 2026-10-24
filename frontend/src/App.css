@@ -1,0 +1,131 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1c1f24;
+  --muted: #6b7280;
+  --border: #e3e6eb;
+  --accent: #2563eb;
+  --user: #2563eb;
+  --tool-bg: #eef2ff;
+  --tool-text: #3730a3;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111317;
+    --surface: #1a1d23;
+    --text: #e8eaee;
+    --muted: #9ca3af;
+    --border: #2a2e36;
+    --accent: #3b82f6;
+    --user: #2563eb;
+    --tool-bg: #232a4d;
+    --tool-text: #c7d2fe;
+    --error-bg: #3b1515;
+    --error-text: #fca5a5;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.app {
+  max-width: 760px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 { margin: 0; font-size: 18px; }
+
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.empty { margin: auto; text-align: center; color: var(--muted); }
+.examples { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+
+.bubble { max-width: 85%; padding: 12px 14px; border-radius: 14px; line-height: 1.5; }
+.bubble.user { align-self: flex-end; background: var(--user); color: #fff; }
+.bubble.agent { align-self: flex-start; background: var(--bg); border: 1px solid var(--border); }
+.text { white-space: pre-wrap; }
+.muted { color: var(--muted); }
+
+.tools { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tool {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--tool-bg);
+  color: var(--tool-text);
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.composer {
+  display: flex;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+}
+.composer input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+}
+.composer input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+button.chip {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  text-align: left;
+}
+button.chip:hover { border-color: var(--accent); }
